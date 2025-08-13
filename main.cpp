@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
   //  QString styleSheet = QLatin1String(file.readAll());
   //  a.setStyleSheet(styleSheet);
 
-  qDebug()<<QStyleFactory::keys();
+  //qDebug()<<QStyleFactory::keys();
 
   return a.exec();
 }
