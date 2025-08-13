@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1155</width>
+    <height>663</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>KIMView  1.1.0</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="RC.qrc">
+    <normaloff>:/Icons/Eye.png</normaloff>:/Icons/Eye.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QMdiArea" name="mdiAreaView">
+      <property name="contextMenuPolicy">
+       <enum>Qt::ContextMenuPolicy::ActionsContextMenu</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1155</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <widget class="QMenu" name="menuImport">
+     <property name="title">
+      <string>&amp;Import</string>
+     </property>
+     <addaction name="actionCT"/>
+     <addaction name="actionStructures"/>
+     <addaction name="actionDose"/>
+     <addaction name="actionPlan"/>
+    </widget>
+    <addaction name="menuImport"/>
+    <addaction name="actionClose_Patient"/>
+   </widget>
+   <widget class="QMenu" name="menuInsert">
+    <property name="title">
+     <string>&amp;Insert</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionZoom_In_All"/>
+    <addaction name="actionZoom_Out_All"/>
+    <addaction name="actionReset_Zoom"/>
+    <addaction name="actionGo_To_Isocentre"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionBEV"/>
+    <addaction name="action3DView"/>
+    <addaction name="separator"/>
+    <addaction name="actionShowBeams"/>
+    <addaction name="actionArcsView"/>
+    <addaction name="actionShowDose"/>
+    <addaction name="actionShowContours"/>
+    <addaction name="separator"/>
+    <addaction name="actionReset_WL_WW"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>&amp;Tools</string>
+    </property>
+    <addaction name="actionCalc_DVH"/>
+    <addaction name="actionWL_WW"/>
+   </widget>
+   <widget class="QMenu" name="menuDose">
+    <property name="title">
+     <string>&amp;Dose</string>
+    </property>
+    <addaction name="actionAdjust_Range"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Testing</string>
+    </property>
+    <addaction name="actionRender_Bones"/>
+    <addaction name="actionHello_UDP"/>
+    <addaction name="actionMove_ROI"/>
+    <addaction name="actionRotate_ROI"/>
+    <addaction name="actionAdd_Arc"/>
+    <addaction name="actionSend_UDP"/>
+    <addaction name="actionUpdate_Dose"/>
+   </widget>
+   <widget class="QMenu" name="menuStructures">
+    <property name="title">
+     <string>&amp;Structures</string>
+    </property>
+    <addaction name="actionSphericity_Calc"/>
+   </widget>
+   <widget class="QMenu" name="menuWindows">
+    <property name="title">
+     <string>&amp;Windows</string>
+    </property>
+    <addaction name="actionInformation"/>
+    <addaction name="actionPlan_Information"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>&amp;About</string>
+    </property>
+    <addaction name="actionAbout_QT"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>&amp;Settings</string>
+    </property>
+    <widget class="QMenu" name="menuThemes">
+     <property name="title">
+      <string>Themes</string>
+     </property>
+     <addaction name="actionAqua"/>
+     <addaction name="actionDark"/>
+     <addaction name="actionElegant_Dark"/>
+     <addaction name="actionManjaro"/>
+     <addaction name="actionMaterial_Dark"/>
+     <addaction name="actionImageX"/>
+    </widget>
+    <addaction name="actionIP_COnfiguration"/>
+    <addaction name="menuThemes"/>
+   </widget>
+   <widget class="QMenu" name="menuTracking">
+    <property name="title">
+     <string>&amp;Tracking</string>
+    </property>
+    <addaction name="actionStart"/>
+    <addaction name="actionStop"/>
+   </widget>
+   <widget class="QMenu" name="menuLayout">
+    <property name="title">
+     <string>Layout</string>
+    </property>
+    <addaction name="actionTile_All"/>
+    <addaction name="actionView1"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuInsert"/>
+   <addaction name="menuView"/>
+   <addaction name="menuLayout"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuDose"/>
+   <addaction name="menuStructures"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuWindows"/>
+   <addaction name="menuTracking"/>
+   <addaction name="menuAbout"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionCT"/>
+   <addaction name="actionStructures"/>
+   <addaction name="actionDose"/>
+   <addaction name="actionPlan"/>
+   <addaction name="actionZoom_In_All"/>
+   <addaction name="actionZoom_Out_All"/>
+   <addaction name="actionReset_Zoom"/>
+   <addaction name="actionGo_To_Isocentre"/>
+   <addaction name="actionArcsView"/>
+   <addaction name="actionCalc_DVH"/>
+   <addaction name="actionBEV"/>
+   <addaction name="actionShowBeams"/>
+   <addaction name="actionAdjust_Range"/>
+   <addaction name="actionReset_WL_WW"/>
+   <addaction name="actionIP_COnfiguration"/>
+   <addaction name="actionStart"/>
+   <addaction name="actionStop"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>166</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>500</width>
+     <height>524287</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFeature::DockWidgetFloatable|QDockWidget::DockWidgetFeature::DockWidgetMovable|QDockWidget::DockWidgetFeature::DockWidgetVerticalTitleBar</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::DockWidgetArea::AllDockWidgetAreas</set>
+   </property>
+   <property name="windowTitle">
+    <string>Information</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QTreeWidget" name="treeWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>500</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="contextMenuPolicy">
+        <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>false</bool>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string>Patient</string>
+        </property>
+        <property name="icon">
+         <iconset resource="RC.qrc">
+          <normaloff>:/Icons/Patient.png</normaloff>:/Icons/Patient.png</iconset>
+        </property>
+       </column>
+       <item>
+        <property name="text">
+         <string>Images</string>
+        </property>
+        <property name="icon">
+         <iconset resource="RC.qrc">
+          <normaloff>:/Icons/CT.png</normaloff>:/Icons/CT.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Structures</string>
+        </property>
+        <property name="icon">
+         <iconset resource="RC.qrc">
+          <normaloff>:/Icons/StructureSet.png</normaloff>:/Icons/StructureSet.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Plan</string>
+        </property>
+        <property name="icon">
+         <iconset resource="RC.qrc">
+          <normaloff>:/Icons/Plan.png</normaloff>:/Icons/Plan.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dose</string>
+        </property>
+        <property name="icon">
+         <iconset resource="RC.qrc">
+          <normaloff>:/Icons/Dose.png</normaloff>:/Icons/Dose.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>POIs</string>
+        </property>
+        <property name="icon">
+         <iconset resource="RC.qrc">
+          <normaloff>:/Icons/POI.png</normaloff>:/Icons/POI.png</iconset>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFeature::DockWidgetFloatable|QDockWidget::DockWidgetFeature::DockWidgetMovable|QDockWidget::DockWidgetFeature::DockWidgetVerticalTitleBar</set>
+   </property>
+   <property name="windowTitle">
+    <string>Plan Information</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <widget class="QTableWidget" name="tableWidget">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All distances are in cm&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::InputMethodHint::ImhNone</set>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="rowCount">
+        <number>0</number>
+       </property>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Beam ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Beam Name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Machine</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Type</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Energy</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Gantry Start</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Gantry Stop</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Direction</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Coll</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Couch</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Field X1</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Field X2</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Field Y1</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Field Y2</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Isocentre (X)</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Isocentre (Y)</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Isocentre (Z)</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>SSD</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>MU</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionZoom_In_All">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Zoom-In.png</normaloff>:/Icons/Zoom-In.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom &amp;In All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl++</string>
+   </property>
+  </action>
+  <action name="actionZoom_Out_All">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Zoom-Out.png</normaloff>:/Icons/Zoom-Out.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom &amp;Out All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionReset_Zoom">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Zoom-Reset.png</normaloff>:/Icons/Zoom-Reset.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Reset Zoom</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+0</string>
+   </property>
+  </action>
+  <action name="actionShow_Origin">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::CameraWeb">
+     <normaloff>:/RC/Icons2/Origin.png</normaloff>:/RC/Icons2/Origin.png</iconset>
+   </property>
+   <property name="text">
+    <string>Show Origin</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionCT">
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/CT.png</normaloff>:/Icons/CT.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;CT</string>
+   </property>
+  </action>
+  <action name="actionStructures">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/StructureSet.png</normaloff>:/Icons/StructureSet.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Structures</string>
+   </property>
+  </action>
+  <action name="actionPlan">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Plan.png</normaloff>:/Icons/Plan.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Plan</string>
+   </property>
+  </action>
+  <action name="actionGo_To_Isocentre">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Isocentre.png</normaloff>:/Icons/Isocentre.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Go To Isocentre</string>
+   </property>
+  </action>
+  <action name="actionDose">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Dose.png</normaloff>:/Icons/Dose.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Dose</string>
+   </property>
+  </action>
+  <action name="actionBEV">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/BEV.PNG</normaloff>:/Icons/BEV.PNG</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;BEV</string>
+   </property>
+   <property name="toolTip">
+    <string>Show BEV for selected beam</string>
+   </property>
+  </action>
+  <action name="action3DView">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Rotate3D.png</normaloff>:/Icons/Rotate3D.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;3DView</string>
+   </property>
+  </action>
+  <action name="actionClose_Patient">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/RC/Icons1/delete.png</normaloff>:/RC/Icons1/delete.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Close Patient</string>
+   </property>
+  </action>
+  <action name="actionShowBeams">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Beam.png</normaloff>:/Icons/Beam.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Beams</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle Beams</string>
+   </property>
+  </action>
+  <action name="actionShowDose">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Dose.png</normaloff>:/Icons/Dose.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Dose</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle Dose</string>
+   </property>
+  </action>
+  <action name="actionShowContours">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Polygon.png</normaloff>:/Icons/Polygon.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Contours</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle Contours</string>
+   </property>
+  </action>
+  <action name="actionInformation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Patient.png</normaloff>:/Icons/Patient.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Information</string>
+   </property>
+  </action>
+  <action name="actionPlan_Information">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Plan.png</normaloff>:/Icons/Plan.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Plan Information</string>
+   </property>
+  </action>
+  <action name="actionCalc_DVH">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Charts.png</normaloff>:/Icons/Charts.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Calc DVH</string>
+   </property>
+  </action>
+  <action name="actionAdjust_Range">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Color.png</normaloff>:/Icons/Color.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Adjust Range</string>
+   </property>
+   <property name="toolTip">
+    <string>Adjust dose range</string>
+   </property>
+  </action>
+  <action name="actionReset_WL_WW">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Contrast.png</normaloff>:/Icons/Contrast.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reset &amp;WL/WW</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionRender_Bones">
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Bones.png</normaloff>:/Icons/Bones.png</iconset>
+   </property>
+   <property name="text">
+    <string>Render Bones</string>
+   </property>
+  </action>
+  <action name="actionHello_UDP">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Hello UDP</string>
+   </property>
+  </action>
+  <action name="actionMove_ROI">
+   <property name="text">
+    <string>Move ROI</string>
+   </property>
+  </action>
+  <action name="actionRotate_ROI">
+   <property name="text">
+    <string>Chart</string>
+   </property>
+  </action>
+  <action name="actionAdd_Arc">
+   <property name="text">
+    <string>Add Arc</string>
+   </property>
+  </action>
+  <action name="actionSend_UDP">
+   <property name="text">
+    <string>Send UDP</string>
+   </property>
+  </action>
+  <action name="actionAbout_QT">
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Qt.png</normaloff>:/Icons/Qt.png</iconset>
+   </property>
+   <property name="text">
+    <string>About  &amp;QT</string>
+   </property>
+  </action>
+  <action name="actionIP_COnfiguration">
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Phone.png</normaloff>:/Icons/Phone.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;IP Configuration</string>
+   </property>
+  </action>
+  <action name="actionStart">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Start.png</normaloff>:/Icons/Start.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Start</string>
+   </property>
+   <property name="toolTip">
+    <string>Start tracking</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Stop.png</normaloff>:/Icons/Stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Stop</string>
+   </property>
+   <property name="toolTip">
+    <string>Stop tracking</string>
+   </property>
+  </action>
+  <action name="actionWL_WW">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Contrast.png</normaloff>:/Icons/Contrast.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;WL/WW</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/About.png</normaloff>:/Icons/About.png</iconset>
+   </property>
+   <property name="text">
+    <string>About &amp;KIMView</string>
+   </property>
+  </action>
+  <action name="actionArcsView">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Arcs.png</normaloff>:/Icons/Arcs.png</iconset>
+   </property>
+   <property name="text">
+    <string>View &amp;arcs</string>
+   </property>
+  </action>
+  <action name="actionUpdate_Dose">
+   <property name="text">
+    <string>Update Dose</string>
+   </property>
+  </action>
+  <action name="actionAqua">
+   <property name="text">
+    <string>Aqua</string>
+   </property>
+  </action>
+  <action name="actionDark">
+   <property name="text">
+    <string>Dark</string>
+   </property>
+  </action>
+  <action name="actionElegant_Dark">
+   <property name="text">
+    <string>Elegant Dark</string>
+   </property>
+  </action>
+  <action name="actionManjaro">
+   <property name="text">
+    <string>Manjaro</string>
+   </property>
+  </action>
+  <action name="actionMaterial_Dark">
+   <property name="text">
+    <string>Material Dark</string>
+   </property>
+  </action>
+  <action name="actionImageX">
+   <property name="text">
+    <string>ImageX</string>
+   </property>
+  </action>
+  <action name="actionView1">
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/View1.png</normaloff>:/Icons/View1.png</iconset>
+   </property>
+   <property name="text">
+    <string>View 1</string>
+   </property>
+  </action>
+  <action name="actionTile_All">
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Tile.png</normaloff>:/Icons/Tile.png</iconset>
+   </property>
+   <property name="text">
+    <string>Tile All</string>
+   </property>
+  </action>
+  <action name="actionSphericity_Calc">
+   <property name="icon">
+    <iconset resource="RC.qrc">
+     <normaloff>:/Icons/Sphere.png</normaloff>:/Icons/Sphere.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sphericity Calc</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="RC.qrc"/>
+ </resources>
+ <connections/>
+</ui>

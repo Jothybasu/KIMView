@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,24 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#include "utilities.h"
+
+#include <vtkMatrix4x4.h>
+#include <vtkSmartPointer.h>
+#include <vtkTransform.h>
+
+#include <QDebug>
+
+Utilities::Utilities() {}
+
+double *Utilities::IEC2LPS(double IEC[3]) {
+  vtkSmartPointer<vtkTransform> IEC2LPSTransform =
+      vtkSmartPointer<vtkTransform>::New();
+  IEC2LPSTransform->Identity();
+  IEC2LPSTransform->RotateX(90);
+  double *LPS = IEC2LPSTransform->TransformPoint(IEC);
+  // qDebug()<<out[0] <<out[1] <<out[2];
+  return LPS;
+}

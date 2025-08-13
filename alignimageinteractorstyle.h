@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,27 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#ifndef ALIGNIMAGEINTERACTORSTYLE_H
+#define ALIGNIMAGEINTERACTORSTYLE_H
+
+#define vtkRenderingCore_AUTOINIT 3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)
+#define vtkRenderingVolume_AUTOINIT 1(vtkRenderingVolumeOpenGL2)
+
+
+#include<vtkInteractorStyleTrackballActor.h>
+#include<vtkSmartPointer.h>
+
+
+class AlignImageInteractorStyle : public vtkInteractorStyleTrackballActor
+{
+public:
+    AlignImageInteractorStyle();
+    static AlignImageInteractorStyle *New();
+    void Rotate();
+    void OnRightButtonDown();
+
+};
+
+#endif // ALIGNIMAGEINTERACTORSTYLE_H

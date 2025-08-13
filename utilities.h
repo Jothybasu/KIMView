@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,19 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#ifndef UTILITIES_H
+#define UTILITIES_H
+
+#include <vtkMatrix4x4.h>
+#include <vtkTransform.h>
+
+class Utilities {
+ public:
+  Utilities();
+  // Converts points from IEC to LPS (DICOM) coordinates
+  double *IEC2LPS(double IEC[3]);
+};
+
+#endif  // UTILITIES_H

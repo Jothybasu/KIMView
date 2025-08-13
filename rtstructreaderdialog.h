@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,37 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#ifndef RTSTRUCTREADERDIALOG_H
+#define RTSTRUCTREADERDIALOG_H
+
+#include <QDialog>
+
+namespace Ui {
+class RTStructReaderDialog;
+}
+
+class RTStructReaderDialog : public QDialog {
+  Q_OBJECT
+
+public:
+  explicit RTStructReaderDialog(QWidget *parent = 0);
+  ~RTStructReaderDialog();
+  int NumberOfROIs;
+  double ROIColors[50][3]; // No. of ROIs,RGB- maximum 50 ROIs supported for now
+  QList<QString> ROINames;
+  QList<int> selectedItems;
+  QString structFileName;
+  QString structSetLabel;
+  void getSelectedItems();
+
+private:
+  Ui::RTStructReaderDialog *ui;
+
+private slots:
+  void on_pushButtonRead_clicked();
+  void on_pushButtonChooseFile_clicked();
+};
+
+#endif // RTSTRUCTREADERDIALOG_H

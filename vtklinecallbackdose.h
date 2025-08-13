@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,36 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#ifndef VTKLINECALLBACKDOSE_H
+#define VTKLINECALLBACKDOSE_H
+
+#include <vtkCommand.h>
+#include <vtkImageData.h>
+#include <vtkLineWidget2.h>
+#include <vtkPolyData.h>
+#include <vtkSmartPointer.h>
+
+#include <QMdiArea>
+#include <QSplineSeries>
+
+#include "doseprofiledialog.h"
+
+class vtkLineCallbackDose : public vtkCommand {
+ public:
+  vtkLineCallbackDose(QWidget *parent);
+  ~vtkLineCallbackDose();
+  vtkLineCallbackDose *New(QWidget *parent);
+  vtkSmartPointer<vtkPolyData> lineData;
+  void Execute(vtkObject *caller, unsigned long, void *);
+  vtkSmartPointer<vtkImageData> dose;
+  DoseProfileDialog *doseProfiler;
+  float distance;
+  double trX, trY, trZ;  // X,Y,Z translations
+  void transformPolyData();
+  int SliceOrientation = 0;  // Axial by default
+  QSplineSeries *SplineSeries;
+};
+
+#endif  // VTKLINECALLBACKDOSE_H

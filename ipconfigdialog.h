@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#ifndef IPCONFIGDIALOG_H
+#define IPCONFIGDIALOG_H
+
+#include <QDialog>
+
+namespace Ui {
+class IPConfigDialog;
+}
+
+class IPConfigDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit IPConfigDialog(QWidget *parent = nullptr);
+    ~IPConfigDialog();
+
+private slots:
+    void on_buttonBox_accepted();
+
+private:
+    Ui::IPConfigDialog *ui;
+};
+
+#endif // IPCONFIGDIALOG_H

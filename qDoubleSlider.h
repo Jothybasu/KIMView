@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,38 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#ifndef Q_DOUBLE_SLIDER_H
+#define Q_DOUBLE_SLIDER_H
+
+#include <QSlider>
+#include <QtGui/QtGui>
+
+class QDoubleSlider : public QSlider {
+  Q_OBJECT
+
+ public:
+  QDoubleSlider(QWidget* pParent = NULL);
+
+  void setRange(double Min, double Max);
+  void setMinimum(double Min);
+  double minimum() const;
+  void setMaximum(double Max);
+  double maximum() const;
+  double value() const;
+
+ public slots:
+  void setValue(int value);
+  void setValue(double Value, bool BlockSignals = false);
+
+ private slots:
+
+ signals:
+  void valueChanged(double Value);
+  void rangeChanged(double Min, double Max);
+
+ private:
+  double m_Multiplier;
+};
+#endif

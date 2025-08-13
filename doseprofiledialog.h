@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,38 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#ifndef DOSEPROFILEDIALOG_H
+#define DOSEPROFILEDIALOG_H
+
+#include <QChartView>
+#include <QCloseEvent>
+#include <QDialog>
+#include <QLineSeries>
+#include <QSplineSeries>
+
+//QT_CHARTS_USE_NAMESPACE
+
+namespace Ui {
+class DoseProfileDialog;
+}
+
+class DoseProfileDialog : public QDialog {
+  Q_OBJECT
+
+ public:
+  explicit DoseProfileDialog(QWidget *parent = 0);
+  ~DoseProfileDialog();
+  void plotProfile();
+  QSplineSeries *DoseData;
+  void closeEvent(QCloseEvent *event);
+
+ private:
+  Ui::DoseProfileDialog *ui;
+
+ private slots:
+  void on_actionSave_Figure_triggered();
+};
+
+#endif  // DOSEPROFILEDIALOG_H

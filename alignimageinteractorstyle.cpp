@@ -1,3 +1,4 @@
+/********************************************************************************
 MIT License
 
 Copyright (c) 2021 Jothy Selvaraj
@@ -19,3 +20,31 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+********************************************************************************/
+
+#include "alignimageinteractorstyle.h"
+
+#define vtkRenderingCore_AUTOINIT \
+  3(vtkInteractionStyle, vtkRenderingFreeType, vtkRenderingOpenGL2)
+#define vtkRenderingVolume_AUTOINIT 1(vtkRenderingVolumeOpenGL2)
+
+#include <vtkCommand.h>
+#include <vtkRenderWindowInteractor.h>
+
+#include <QDebug>
+
+AlignImageInteractorStyle::AlignImageInteractorStyle() {
+  class SpinImage : public vtkCommand {};
+}
+
+AlignImageInteractorStyle *AlignImageInteractorStyle::New() {
+  return new AlignImageInteractorStyle;
+}
+
+// Disable rotation in 3D
+void AlignImageInteractorStyle::Rotate() {
+  // qDebug()<<"Rotation disabled:)";
+}
+
+// Disable zoom right button down
+void AlignImageInteractorStyle::OnRightButtonDown() {}
