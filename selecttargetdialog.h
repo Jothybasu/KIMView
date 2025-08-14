@@ -31,24 +31,25 @@ namespace Ui {
 class SelectTargetDialog;
 }
 
-class SelectTargetDialog : public QDialog {
-  Q_OBJECT
+class SelectTargetDialog : public QDialog
+{
+    Q_OBJECT
 
 public:
-  explicit SelectTargetDialog(QWidget *parent = nullptr);
-  ~SelectTargetDialog();
-  QWidget *parent;
-  double (*ROIColors)[3];
-  unsigned int selectedROINum;
-  QList<QString> ROINames;
-  void setROINames();
-  bool ROISelected = false;
+    explicit SelectTargetDialog(QWidget *parent = nullptr);
+    ~SelectTargetDialog();
+    QWidget *parent;
+    double (*ROIColors)[3];
+    unsigned int selectedROINum;
+    QList<QString> ROINames;
+    void setROINames();
+    bool ROISelected = false;
 
 private:
-  Ui::SelectTargetDialog *ui;
+    Ui::SelectTargetDialog *ui;
 
 private slots:
-  void on_buttonBox_accepted();
+    void on_buttonBox_accepted();
 };
 
 #endif // SELECTTARGETDIALOG_H

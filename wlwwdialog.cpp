@@ -33,90 +33,91 @@ THE SOFTWARE.
 #include "ui_wlwwdialog.h"
 
 WLWWDialog::WLWWDialog(QWidget *parent)
-    : QDialog(parent), ui(new Ui::WLWWDialog) {
-  ui->setupUi(this);
+    : QDialog(parent)
+    , ui(new Ui::WLWWDialog)
+{
+    ui->setupUi(this);
 }
 
-WLWWDialog::~WLWWDialog() { delete ui; }
-
-void WLWWDialog::on_pushButtonReset_clicked() {
-  this->ui->ScrollBar_width->setValue(1000);
-  this->ui->ScrollBar_level->setValue(100);
-  this->ui->lineEditWidth->setText("1000");
-  this->ui->lineEditLevel->setText("100");
-
-  this->updateWLWW();
+WLWWDialog::~WLWWDialog()
+{
+    delete ui;
 }
 
-void WLWWDialog::on_ScrollBar_level_sliderMoved(int position) {
-  // qDebug() << position;
-  this->ui->lineEditLevel->setText(
-      QString::number(this->ui->ScrollBar_level->value()));
-  this->updateWLWW();
+void WLWWDialog::on_pushButtonReset_clicked()
+{
+    this->ui->ScrollBar_width->setValue(1000);
+    this->ui->ScrollBar_level->setValue(100);
+    this->ui->lineEditWidth->setText("1000");
+    this->ui->lineEditLevel->setText("100");
+
+    this->updateWLWW();
 }
 
-void WLWWDialog::on_ScrollBar_width_sliderMoved(int position) {
-  // qDebug() << position;
-  this->ui->lineEditWidth->setText(
-      QString::number(this->ui->ScrollBar_width->value()));
-  this->updateWLWW();
+void WLWWDialog::on_ScrollBar_level_sliderMoved(int position)
+{
+    // qDebug() << position;
+    this->ui->lineEditLevel->setText(QString::number(this->ui->ScrollBar_level->value()));
+    this->updateWLWW();
 }
 
-void WLWWDialog::on_lineEditWidth_editingFinished() {
-  this->ui->ScrollBar_width->setValue(this->ui->lineEditWidth->text().toInt());
-  this->updateWLWW();
+void WLWWDialog::on_ScrollBar_width_sliderMoved(int position)
+{
+    // qDebug() << position;
+    this->ui->lineEditWidth->setText(QString::number(this->ui->ScrollBar_width->value()));
+    this->updateWLWW();
 }
 
-void WLWWDialog::on_lineEditLevel_editingFinished() {
-  this->ui->ScrollBar_level->setValue(this->ui->lineEditLevel->text().toInt());
-  this->updateWLWW();
+void WLWWDialog::on_lineEditWidth_editingFinished()
+{
+    this->ui->ScrollBar_width->setValue(this->ui->lineEditWidth->text().toInt());
+    this->updateWLWW();
 }
 
-void WLWWDialog::updateWLWW() {
-  // Calculate range of CT values ,ÇwindowLow and WindowUp for WL & WW
-  double winUp = this->ui->ScrollBar_level->value() +
-                 (this->ui->ScrollBar_width->value() / 2.0);
-  double winLow = this->ui->ScrollBar_level->value() -
-                  (this->ui->ScrollBar_width->value() / 2.0);
+void WLWWDialog::on_lineEditLevel_editingFinished()
+{
+    this->ui->ScrollBar_level->setValue(this->ui->lineEditLevel->text().toInt());
+    this->updateWLWW();
+}
 
-  // qDebug() << winLow << "'" << winUp;
+void WLWWDialog::updateWLWW()
+{
+    // Calculate range of CT values ,ÇwindowLow and WindowUp for WL & WW
+    double winUp = this->ui->ScrollBar_level->value() + (this->ui->ScrollBar_width->value() / 2.0);
+    double winLow = this->ui->ScrollBar_level->value() - (this->ui->ScrollBar_width->value() / 2.0);
 
-  this->AxialViewer->ViewRenderer->RemoveActor(this->AxialViewer->ImageSlice);
-  this->AxialViewer->ViewRenderer->RemoveActor(this->AxialViewer->DoseSlice);
-  this->AxialViewer->WindowLow = winLow;
-  this->AxialViewer->WindowUp = winUp;
-  this->AxialViewer->AdjustImageWLWW();
-  this->AxialViewer->ViewRenderer->AddActor(this->AxialViewer->ImageSlice);
-  if (this->AxialViewer->DoseVisibility == 1) {
-    this->AxialViewer->ViewRenderer->AddActor(this->AxialViewer->DoseSlice);
-  }
-  this->AxialViewer->ViewRenderer->GetRenderWindow()->Render();
+    // qDebug() << winLow << "'" << winUp;
 
-  this->SagittalViewer->ViewRenderer->RemoveActor(
-      this->SagittalViewer->ImageSlice);
-  this->SagittalViewer->ViewRenderer->RemoveActor(
-      this->SagittalViewer->DoseSlice);
-  this->SagittalViewer->WindowLow = winLow;
-  this->SagittalViewer->WindowUp = winUp;
-  this->SagittalViewer->AdjustImageWLWW();
-  this->SagittalViewer->ViewRenderer->AddActor(
-      this->SagittalViewer->ImageSlice);
-  if (this->SagittalViewer->DoseVisibility == 1) {
-    this->SagittalViewer->ViewRenderer->AddActor(
-        this->SagittalViewer->DoseSlice);
-  }
-  this->SagittalViewer->ViewRenderer->GetRenderWindow()->Render();
+    this->AxialViewer->ViewRenderer->RemoveActor(this->AxialViewer->ImageSlice);
+    this->AxialViewer->ViewRenderer->RemoveActor(this->AxialViewer->DoseSlice);
+    this->AxialViewer->WindowLow = winLow;
+    this->AxialViewer->WindowUp = winUp;
+    this->AxialViewer->AdjustImageWLWW();
+    this->AxialViewer->ViewRenderer->AddActor(this->AxialViewer->ImageSlice);
+    if (this->AxialViewer->DoseVisibility == 1) {
+        this->AxialViewer->ViewRenderer->AddActor(this->AxialViewer->DoseSlice);
+    }
+    this->AxialViewer->ViewRenderer->GetRenderWindow()->Render();
 
-  this->CoronalViewer->ViewRenderer->RemoveActor(
-      this->CoronalViewer->ImageSlice);
-  this->CoronalViewer->ViewRenderer->RemoveActor(
-      this->CoronalViewer->DoseSlice);
-  this->CoronalViewer->WindowLow = winLow;
-  this->CoronalViewer->WindowUp = winUp;
-  this->CoronalViewer->AdjustImageWLWW();
-  this->CoronalViewer->ViewRenderer->AddActor(this->CoronalViewer->ImageSlice);
-  if (this->CoronalViewer->DoseVisibility == 1) {
-    this->CoronalViewer->ViewRenderer->AddActor(this->CoronalViewer->DoseSlice);
-  }
-  this->CoronalViewer->ViewRenderer->GetRenderWindow()->Render();
+    this->SagittalViewer->ViewRenderer->RemoveActor(this->SagittalViewer->ImageSlice);
+    this->SagittalViewer->ViewRenderer->RemoveActor(this->SagittalViewer->DoseSlice);
+    this->SagittalViewer->WindowLow = winLow;
+    this->SagittalViewer->WindowUp = winUp;
+    this->SagittalViewer->AdjustImageWLWW();
+    this->SagittalViewer->ViewRenderer->AddActor(this->SagittalViewer->ImageSlice);
+    if (this->SagittalViewer->DoseVisibility == 1) {
+        this->SagittalViewer->ViewRenderer->AddActor(this->SagittalViewer->DoseSlice);
+    }
+    this->SagittalViewer->ViewRenderer->GetRenderWindow()->Render();
+
+    this->CoronalViewer->ViewRenderer->RemoveActor(this->CoronalViewer->ImageSlice);
+    this->CoronalViewer->ViewRenderer->RemoveActor(this->CoronalViewer->DoseSlice);
+    this->CoronalViewer->WindowLow = winLow;
+    this->CoronalViewer->WindowUp = winUp;
+    this->CoronalViewer->AdjustImageWLWW();
+    this->CoronalViewer->ViewRenderer->AddActor(this->CoronalViewer->ImageSlice);
+    if (this->CoronalViewer->DoseVisibility == 1) {
+        this->CoronalViewer->ViewRenderer->AddActor(this->CoronalViewer->DoseSlice);
+    }
+    this->CoronalViewer->ViewRenderer->GetRenderWindow()->Render();
 }

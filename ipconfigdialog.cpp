@@ -30,30 +30,35 @@ SOFTWARE.
 #include "ui_ipconfigdialog.h"
 
 IPConfigDialog::IPConfigDialog(QWidget *parent)
-    : QDialog(parent), ui(new Ui::IPConfigDialog) {
-  ui->setupUi(this);
+    : QDialog(parent)
+    , ui(new Ui::IPConfigDialog)
+{
+    ui->setupUi(this);
 
-  // Receiver port
-  QSettings settings("ImageX", "KIMView");
-  QString KIMViewIP = settings.value("KIMViewIP").toString();
-  int KIMViewPort = settings.value("KIMViewPort").toInt();
-  // int KIMPort=settings.value("KIMPort").toInt();
+    // Receiver port
+    QSettings settings("ImageX", "KIMView");
+    QString KIMViewIP = settings.value("KIMViewIP").toString();
+    int KIMViewPort = settings.value("KIMViewPort").toInt();
+    // int KIMPort=settings.value("KIMPort").toInt();
 
-  this->ui->lineEdit_KIMViewIP->setText(KIMViewIP);
-  // this->ui->lineEdit_KIMPort->setText(QString::number(KIMPort));
-  this->ui->lineEdit_KIMViewPort->setText(QString::number(KIMViewPort));
+    this->ui->lineEdit_KIMViewIP->setText(KIMViewIP);
+    // this->ui->lineEdit_KIMPort->setText(QString::number(KIMPort));
+    this->ui->lineEdit_KIMViewPort->setText(QString::number(KIMViewPort));
 }
 
-IPConfigDialog::~IPConfigDialog() { delete ui; }
+IPConfigDialog::~IPConfigDialog()
+{
+    delete ui;
+}
 
-void IPConfigDialog::on_buttonBox_accepted() {
-  //    qDebug()<<this->ui->lineEdit_KIMViewIP->text();
-  //    qDebug()<<this->ui->lineEdit_KIMPort->text().toInt();
-  //    qDebug()<<this->ui->lineEdit_KIMViewPort->text().toInt();
+void IPConfigDialog::on_buttonBox_accepted()
+{
+    //    qDebug()<<this->ui->lineEdit_KIMViewIP->text();
+    //    qDebug()<<this->ui->lineEdit_KIMPort->text().toInt();
+    //    qDebug()<<this->ui->lineEdit_KIMViewPort->text().toInt();
 
-  QSettings settings("ImageX", "KIMView");
-  settings.setValue("KIMViewIP", this->ui->lineEdit_KIMViewIP->text());
-  // settings.setValue("KIMPort",this->ui->lineEdit_KIMPort->text().toInt());
-  settings.setValue("KIMViewPort",
-                    this->ui->lineEdit_KIMViewPort->text().toInt());
+    QSettings settings("ImageX", "KIMView");
+    settings.setValue("KIMViewIP", this->ui->lineEdit_KIMViewIP->text());
+    // settings.setValue("KIMPort",this->ui->lineEdit_KIMPort->text().toInt());
+    settings.setValue("KIMViewPort", this->ui->lineEdit_KIMViewPort->text().toInt());
 }

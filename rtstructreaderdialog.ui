@@ -84,7 +84,7 @@
        <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -100,7 +100,7 @@
           <string>Read</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/Page-read.png</normaloff>:/Icons/Page-read.png</iconset>
          </property>
         </widget>
@@ -108,7 +108,7 @@
        <item>
         <spacer name="horizontalSpacer_3">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>

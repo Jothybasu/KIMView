@@ -26,8 +26,8 @@ Copyright (c) 2021 Jothy Selvaraj
 
 #include <QDialog>
 
-        namespace Ui {
-    class PresetWLWWDialog;
+namespace Ui {
+class PresetWLWWDialog;
 }
 
 class PresetWLWWDialog : public QDialog

@@ -70,7 +70,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/Axial.png</normaloff>:/Icons/Axial.png</iconset>
          </property>
          <property name="iconSize">
@@ -90,7 +90,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/Sagittal.png</normaloff>:/Icons/Sagittal.png</iconset>
          </property>
          <property name="iconSize">
@@ -110,7 +110,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/Coronal.png</normaloff>:/Icons/Coronal.png</iconset>
          </property>
          <property name="iconSize">
@@ -133,7 +133,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/Mouse.png</normaloff>:/Icons/Mouse.png</iconset>
          </property>
          <property name="iconSize">
@@ -159,7 +159,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/Camera.png</normaloff>:/Icons/Camera.png</iconset>
          </property>
          <property name="iconSize">
@@ -182,7 +182,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/Profile.png</normaloff>:/Icons/Profile.png</iconset>
          </property>
          <property name="iconSize">
@@ -208,7 +208,7 @@
           <string>...</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/ScalarBar.png</normaloff>:/Icons/ScalarBar.png</iconset>
          </property>
          <property name="iconSize">
@@ -278,7 +278,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="RC.qrc">
+    <iconset>
      <normaloff>:/Icons/Ruler.png</normaloff>:/Icons/Ruler.png</iconset>
    </property>
    <property name="text">
@@ -290,7 +290,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="RC.qrc">
+    <iconset>
      <normaloff>:/Icons/Protractor.png</normaloff>:/Icons/Protractor.png</iconset>
    </property>
    <property name="text">
@@ -299,7 +299,7 @@
   </action>
   <action name="actionReset_WL_WW">
    <property name="icon">
-    <iconset resource="RC.qrc">
+    <iconset>
      <normaloff>:/Icons/Reset.png</normaloff>:/Icons/Reset.png</iconset>
    </property>
    <property name="text">
@@ -314,7 +314,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="RC.qrc">
+    <iconset>
      <normaloff>:/Icons/Polygon.png</normaloff>:/Icons/Polygon.png</iconset>
    </property>
    <property name="text">
@@ -332,7 +332,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="RC.qrc">
+    <iconset>
      <normaloff>:/Icons/Dose.png</normaloff>:/Icons/Dose.png</iconset>
    </property>
    <property name="text">
@@ -347,7 +347,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="RC.qrc">
+    <iconset>
      <normaloff>:/Icons/RubberBandZoom.png</normaloff>:/Icons/RubberBandZoom.png</iconset>
    </property>
    <property name="text">
@@ -365,7 +365,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="RC.qrc">
+    <iconset>
      <normaloff>:/Icons/Beam.png</normaloff>:/Icons/Beam.png</iconset>
    </property>
    <property name="text">
@@ -380,7 +380,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="RC.qrc">
+    <iconset>
      <normaloff>:/Icons/Extent.png</normaloff>:/Icons/Extent.png</iconset>
    </property>
    <property name="text">

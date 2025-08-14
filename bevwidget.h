@@ -43,42 +43,43 @@ namespace Ui {
 class BEVWidget;
 }
 
-class BEVWidget : public QWidget {
-  Q_OBJECT
+class BEVWidget : public QWidget
+{
+    Q_OBJECT
 
- public:
-  explicit BEVWidget(QWidget *parent = nullptr, QActionGroup *contextMenus = 0);
-  ~BEVWidget();
-  double (*ROIColors)[3];
-  std::vector<vtkSmartPointer<vtkPolyData> > MeshList;
-  std::vector<vtkSmartPointer<vtkPolyData> > BeamList;
-  // vtkSmartPointer<vtkRenderer>ViewRenderer;
-  vtkSmartPointer<vtkActorCollection> MeshActors;
-  vtkSmartPointer<vtkActorCollection> BeamActors;
-  vtkSmartPointer<vtkRenderer> ModelRenderer;
-  vtkSmartPointer<vtkRenderer> ModelRenderer2;
-  vtkSmartPointer<vtkInteractorStyleImage> ImageStyleImg;
-  vtkSmartPointer<vtkRenderWindowInteractor> Interactor3D;
-  vtkSmartPointer<vtkInteractorStyleTrackballCamera> InteractorTrackball;
-  vtkSmartPointer<vtkAnnotatedCubeActor> AnnotatedCube;
-  vtkSmartPointer<vtkOrientationMarkerWidget> MarkerWidget;
-  vtkSmartPointer<vtkOrientationMarkerWidget> MarkerWidget2;
-  vtkSmartPointer<vtkActor> BEVField;
-  vtkSmartPointer<vtkAxesActor> Axes;
-  vtkSmartPointer<vtkActor> IsodoseSurface;
-  vtkSmartPointer<vtkImageData> RTDose;
-  QList<QString> ROITypes;
+public:
+    explicit BEVWidget(QWidget *parent = nullptr, QActionGroup *contextMenus = 0);
+    ~BEVWidget();
+    double (*ROIColors)[3];
+    std::vector<vtkSmartPointer<vtkPolyData> > MeshList;
+    std::vector<vtkSmartPointer<vtkPolyData> > BeamList;
+    // vtkSmartPointer<vtkRenderer>ViewRenderer;
+    vtkSmartPointer<vtkActorCollection> MeshActors;
+    vtkSmartPointer<vtkActorCollection> BeamActors;
+    vtkSmartPointer<vtkRenderer> ModelRenderer;
+    vtkSmartPointer<vtkRenderer> ModelRenderer2;
+    vtkSmartPointer<vtkInteractorStyleImage> ImageStyleImg;
+    vtkSmartPointer<vtkRenderWindowInteractor> Interactor3D;
+    vtkSmartPointer<vtkInteractorStyleTrackballCamera> InteractorTrackball;
+    vtkSmartPointer<vtkAnnotatedCubeActor> AnnotatedCube;
+    vtkSmartPointer<vtkOrientationMarkerWidget> MarkerWidget;
+    vtkSmartPointer<vtkOrientationMarkerWidget> MarkerWidget2;
+    vtkSmartPointer<vtkActor> BEVField;
+    vtkSmartPointer<vtkAxesActor> Axes;
+    vtkSmartPointer<vtkActor> IsodoseSurface;
+    vtkSmartPointer<vtkImageData> RTDose;
+    QList<QString> ROITypes;
 
-  double *Isocentre;
-  double GantryAngle;
+    double *Isocentre;
+    double GantryAngle;
 
-  void DisplayBEV();
-  void DisplayMeshes();
-  void DisplayBeams();
-  void ShowIsodoseSurface(double minDose, double maxDose);
+    void DisplayBEV();
+    void DisplayMeshes();
+    void DisplayBeams();
+    void ShowIsodoseSurface(double minDose, double maxDose);
 
- private:
-  Ui::BEVWidget *ui;
+private:
+    Ui::BEVWidget *ui;
 };
 
-#endif  // BEVWIDGET_H
+#endif // BEVWIDGET_H

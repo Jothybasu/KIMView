@@ -29,29 +29,36 @@ THE SOFTWARE.
 #include "ui_selecttargetdialog.h"
 
 SelectTargetDialog::SelectTargetDialog(QWidget *parent)
-    : QDialog(parent), ui(new Ui::SelectTargetDialog) {
-  ui->setupUi(this);
-  this->parent = parent;
+    : QDialog(parent)
+    , ui(new Ui::SelectTargetDialog)
+{
+    ui->setupUi(this);
+    this->parent = parent;
 }
 
-SelectTargetDialog::~SelectTargetDialog() { delete ui; }
-
-void SelectTargetDialog::setROINames() {
-  for (int i = 0; i < this->ROINames.size(); i++) {
-    // qDebug() << this->ROINames[i];
-    this->ui->comboBox->addItem(this->ROINames[i]);
-    this->ui->comboBox->setItemData(i,
-                                    QColor(this->ROIColors[i][0],
-                                           this->ROIColors[i][1],
-                                           this->ROIColors[i][2]),
-                                    Qt::BackgroundRole);
-  }
+SelectTargetDialog::~SelectTargetDialog()
+{
+    delete ui;
 }
 
-void SelectTargetDialog::on_buttonBox_accepted() {
-  this->selectedROINum = this->ui->comboBox->currentIndex();
-  this->ROISelected = true;
-  if (this->ROISelected) {
-    qDebug() << "Selected item: " << this->selectedROINum;
-  }
+void SelectTargetDialog::setROINames()
+{
+    for (int i = 0; i < this->ROINames.size(); i++) {
+        // qDebug() << this->ROINames[i];
+        this->ui->comboBox->addItem(this->ROINames[i]);
+        this->ui->comboBox->setItemData(i,
+                                        QColor(this->ROIColors[i][0],
+                                               this->ROIColors[i][1],
+                                               this->ROIColors[i][2]),
+                                        Qt::BackgroundRole);
+    }
+}
+
+void SelectTargetDialog::on_buttonBox_accepted()
+{
+    this->selectedROINum = this->ui->comboBox->currentIndex();
+    this->ROISelected = true;
+    if (this->ROISelected) {
+        qDebug() << "Selected item: " << this->selectedROINum;
+    }
 }

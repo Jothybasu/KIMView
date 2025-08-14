@@ -33,32 +33,33 @@ namespace Ui {
 class WLWWDialog;
 }
 
-class WLWWDialog : public QDialog {
-  Q_OBJECT
+class WLWWDialog : public QDialog
+{
+    Q_OBJECT
 
- public:
-  explicit WLWWDialog(QWidget *parent = nullptr);
-  ~WLWWDialog();
-  ImageViewer2D *AxialViewer;
-  ImageViewer2D *CoronalViewer;
-  ImageViewer2D *SagittalViewer;
+public:
+    explicit WLWWDialog(QWidget *parent = nullptr);
+    ~WLWWDialog();
+    ImageViewer2D *AxialViewer;
+    ImageViewer2D *CoronalViewer;
+    ImageViewer2D *SagittalViewer;
 
- private slots:
+private slots:
 
-  void on_pushButtonReset_clicked();
+    void on_pushButtonReset_clicked();
 
-  void on_ScrollBar_level_sliderMoved(int position);
+    void on_ScrollBar_level_sliderMoved(int position);
 
-  void on_ScrollBar_width_sliderMoved(int position);
+    void on_ScrollBar_width_sliderMoved(int position);
 
-  void on_lineEditWidth_editingFinished();
+    void on_lineEditWidth_editingFinished();
 
-  void on_lineEditLevel_editingFinished();
+    void on_lineEditLevel_editingFinished();
 
-  void updateWLWW();
+    void updateWLWW();
 
- private:
-  Ui::WLWWDialog *ui;
+private:
+    Ui::WLWWDialog *ui;
 };
 
-#endif  // WLWWDIALOG_H
+#endif // WLWWDIALOG_H

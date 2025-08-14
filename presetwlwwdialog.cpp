@@ -24,9 +24,9 @@ Copyright (c) 2021 Jothy Selvaraj
 #include "presetwlwwdialog.h"
 #include "ui_presetwlwwdialog.h"
 
-        PresetWLWWDialog::PresetWLWWDialog(QWidget *parent) :
-      QDialog(parent),
-ui(new Ui::PresetWLWWDialog)
+PresetWLWWDialog::PresetWLWWDialog(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::PresetWLWWDialog)
 {
     ui->setupUi(this);
 }

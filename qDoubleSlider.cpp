@@ -23,9 +23,9 @@ SOFTWARE.
 ********************************************************************************/
 
 #include "qDoubleSlider.h"
-QDoubleSlider::QDoubleSlider(QWidget* pParent/*= NULL*/) :
-QSlider(pParent),
-m_Multiplier(10000.0)
+QDoubleSlider::QDoubleSlider(QWidget *pParent /*= NULL*/)
+    : QSlider(pParent)
+    , m_Multiplier(10000.0)
 {
     connect(this, SIGNAL(valueChanged(int)), this, SLOT(setValue(int)));
 
@@ -37,7 +37,7 @@ m_Multiplier(10000.0)
 
 void QDoubleSlider::setValue(int Value)
 {
-    emit valueChanged((double)Value/m_Multiplier);
+    emit valueChanged((double) Value / m_Multiplier);
 }
 
 void QDoubleSlider::setValue(double Value, bool BlockSignals)
@@ -68,7 +68,7 @@ void QDoubleSlider::setMinimum(double Min)
 
 double QDoubleSlider::minimum() const
 {
-    return QSlider::minimum()/m_Multiplier;
+    return QSlider::minimum() / m_Multiplier;
 }
 
 void QDoubleSlider::setMaximum(double Max)
@@ -80,11 +80,11 @@ void QDoubleSlider::setMaximum(double Max)
 
 double QDoubleSlider::maximum() const
 {
-    return QSlider::maximum()/m_Multiplier;
+    return QSlider::maximum() / m_Multiplier;
 }
 
 double QDoubleSlider::value() const
 {
     int Value = QSlider::value();
-    return (double)Value/m_Multiplier;
+    return (double) Value / m_Multiplier;
 }

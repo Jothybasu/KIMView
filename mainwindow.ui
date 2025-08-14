@@ -114,6 +114,7 @@
     <addaction name="actionAdd_Arc"/>
     <addaction name="actionSend_UDP"/>
     <addaction name="actionUpdate_Dose"/>
+    <addaction name="actionRecord_Screen"/>
    </widget>
    <widget class="QMenu" name="menuStructures">
     <property name="title">
@@ -918,6 +919,11 @@
    </property>
    <property name="text">
     <string>Sphericity Calc</string>
+   </property>
+  </action>
+  <action name="actionRecord_Screen">
+   <property name="text">
+    <string>Record Screen</string>
    </property>
   </action>
  </widget>

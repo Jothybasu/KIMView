@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets charts network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets charts network multimedia
 
 CONFIG += c++19
 
@@ -143,16 +143,72 @@ INCLUDEPATH+= C:\Data\Libs\GDCM\Install\include\gdcm-3.0
 LIBS+= -LC:\Data\Libs\GDCM\Install\lib -lgdcmcharls  -lgdcmCommon  -lgdcmDICT  -lgdcmDSED -lgdcmexpat  -lgdcmgetopt  -lgdcmIOD\
 -lgdcmjpeg12  -lgdcmjpeg16 -lgdcmjpeg8  -lgdcmMEXD  -lgdcmMSFF  -lgdcmopenjp2  -lgdcmzlib -lsocketxx
 
-DISTFILES += \    
+DISTFILES +=\
+    Icons/About.png \
+    Icons/Arcs.png \
+    Icons/Axes3D.png \
+    Icons/Axial.png \
+    Icons/BEV.PNG \
+    Icons/Beam.png \
+    Icons/Bones.png \
+    Icons/CT.png \
+    Icons/Camera.png \
+    Icons/Charts.png \
+    Icons/Color.png \
+    Icons/Contrast.png \
+    Icons/Coronal.png \
+    Icons/DVH.png \
+    Icons/Dose.png \
+    Icons/Extent.png \
+    Icons/Eye.png \
+    Icons/Isocentre.png \
+    Icons/KIMView.ico \
+    Icons/KIMView.png \
+    Icons/KIMView.tif \
+    Icons/Legend.png \
+    Icons/Mouse.png \
+    Icons/POI.png \
+    Icons/Page-read.png \
+    Icons/Patient.png \
+    Icons/Phone.png \
+    Icons/Plan.png \
+    Icons/Polygon.png \
+    Icons/Profile.png \
+    Icons/Protractor.png \
+    Icons/Qt.png \
+    Icons/Reset.png \
+    Icons/Rotate3D.png \
+    Icons/RubberBandZoom.png \
+    Icons/Ruler.png \
+    Icons/Sagittal.png \
+    Icons/Save-Figure.png \
+    Icons/ScalarBar.png \
+    Icons/Sphere.png \
+    Icons/Start.png \
+    Icons/Stop.png \
+    Icons/StructureSet.png \
+    Icons/Tile.png \
+    Icons/UnderConstruction.png \
+    Icons/View1.png \
+    Icons/Zoom-In.png \
+    Icons/Zoom-Out.png \
+    Icons/Zoom-Reset.png \
+    Icons/zoom in.png \
+    Icons/zoom out.png \
+    Icons/zoom.png \
     Human.vtp \
     LicenseTemplate \
     Notes \
     Styles/AMOLED.qss \
+    Styles/MacOS.qss \
     Styles/Aqua.qss \
-    Styles/ConsoleStyle.qss \
-    Styles/ElegantDark.qss \
-    Styles/ImageX.qss \
-    Styles/ManjaroMix.qss \
+    Styles/NeonButtons.qss \
+    Styles/Ubuntu.qss   \
+    Styles/ConsoleStyle.qss \    
+    Styles/Dark.qss \    
+    Styles/ElegantDark.qss \    
+    Styles/ImageX.qss \    
+    Styles/ManjaroMix.qss \    
     Styles/MaterialDark.qss \
     Styles/darkstyle.qss
 

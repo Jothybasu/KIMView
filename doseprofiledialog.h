@@ -37,21 +37,22 @@ namespace Ui {
 class DoseProfileDialog;
 }
 
-class DoseProfileDialog : public QDialog {
-  Q_OBJECT
+class DoseProfileDialog : public QDialog
+{
+    Q_OBJECT
 
- public:
-  explicit DoseProfileDialog(QWidget *parent = 0);
-  ~DoseProfileDialog();
-  void plotProfile();
-  QSplineSeries *DoseData;
-  void closeEvent(QCloseEvent *event);
+public:
+    explicit DoseProfileDialog(QWidget *parent = 0);
+    ~DoseProfileDialog();
+    void plotProfile();
+    QSplineSeries *DoseData;
+    void closeEvent(QCloseEvent *event);
 
- private:
-  Ui::DoseProfileDialog *ui;
+private:
+    Ui::DoseProfileDialog *ui;
 
- private slots:
-  void on_actionSave_Figure_triggered();
+private slots:
+    void on_actionSave_Figure_triggered();
 };
 
-#endif  // DOSEPROFILEDIALOG_H
+#endif // DOSEPROFILEDIALOG_H

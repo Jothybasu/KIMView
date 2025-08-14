@@ -23,27 +23,29 @@
  ********************************************************************************/
 #include <QApplication>
 #include <QStyleFactory>
+#include <QFile>
 
 #include "mainwindow.h"
 
 // Testing
 
-int main(int argc, char *argv[]) {
-  QApplication a(argc, argv);
-  MainWindow w;
-  w.showMaximized();
-  a.setStyle(QStyleFactory::create("Fusion"));
-  a.setOrganizationName("ImageX");
-  a.setOrganizationDomain("https://image-x.sydney.edu.au/");
-  a.setApplicationName("KIMView");
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.showMaximized();
+    a.setStyle(QStyleFactory::create("Fusion"));
+    a.setOrganizationName("ImageX");
+    a.setOrganizationDomain("https://image-x.sydney.edu.au/");
+    a.setApplicationName("KIMView");
 
-  //  // Default style
-  //  QFile file(":/Styles/ElegantDark.qss");
-  //  file.open(QFile::ReadOnly);
-  //  QString styleSheet = QLatin1String(file.readAll());
-  //  a.setStyleSheet(styleSheet);
+     // Default style
+     QFile file(":/Styles/MacOS.qss");
+     file.open(QFile::ReadOnly);
+     QString styleSheet = QLatin1String(file.readAll());
+     a.setStyleSheet(styleSheet);
 
-  //qDebug()<<QStyleFactory::keys();
+    //qDebug()<<QStyleFactory::keys();
 
-  return a.exec();
+    return a.exec();
 }

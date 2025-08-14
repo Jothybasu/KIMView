@@ -63,20 +63,20 @@
           <bool>true</bool>
          </property>
          <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::NoButtons</enum>
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QDoubleSlider" name="horizontalSlider">
          <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
+          <enum>Qt::FocusPolicy::NoFocus</enum>
          </property>
          <property name="styleSheet">
           <string notr="true"/>
          </property>
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -101,10 +101,10 @@
           </size>
          </property>
          <property name="buttonSymbols">
-          <enum>QAbstractSpinBox::NoButtons</enum>
+          <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
          </property>
          <property name="correctionMode">
-          <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+          <enum>QAbstractSpinBox::CorrectionMode::CorrectToNearestValue</enum>
          </property>
          <property name="maximum">
           <double>100.000000000000000</double>
@@ -121,7 +121,7 @@
        <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -134,13 +134,13 @@
        <item>
         <widget class="QPushButton" name="pushButton">
          <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
+          <enum>Qt::FocusPolicy::NoFocus</enum>
          </property>
          <property name="text">
           <string>Reset</string>
          </property>
          <property name="icon">
-          <iconset resource="RC.qrc">
+          <iconset>
            <normaloff>:/Icons/Reset.png</normaloff>:/Icons/Reset.png</iconset>
          </property>
         </widget>
@@ -148,7 +148,7 @@
        <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>

@@ -65,53 +65,60 @@ SOFTWARE.
 //QT_CHARTS_USE_NAMESPACE
 
 DoseProfileDialog::DoseProfileDialog(QWidget *parent)
-    : QDialog(parent), ui(new Ui::DoseProfileDialog) {
-  ui->setupUi(this);
+    : QDialog(parent)
+    , ui(new Ui::DoseProfileDialog)
+{
+    ui->setupUi(this);
     Qt::WindowFlags flags;
-  flags = Qt::Dialog;
-  flags |= Qt::WindowMaximizeButtonHint;
-  flags |= Qt::WindowMinimizeButtonHint;
-  // flags |= Qt::WindowCloseButtonHint;
-  this->setWindowFlags(flags);
+    flags = Qt::Dialog;
+    flags |= Qt::WindowMaximizeButtonHint;
+    flags |= Qt::WindowMinimizeButtonHint;
+    // flags |= Qt::WindowCloseButtonHint;
+    this->setWindowFlags(flags);
 
-  this->DoseData = new QSplineSeries;
+    this->DoseData = new QSplineSeries;
 
-  this->addAction(this->ui->actionSave_Figure);
-  this->show();
+    this->addAction(this->ui->actionSave_Figure);
+    this->show();
 }
 
-DoseProfileDialog::~DoseProfileDialog() {
-  delete ui;
-  delete this->DoseData;
+DoseProfileDialog::~DoseProfileDialog()
+{
+    delete ui;
+    delete this->DoseData;
 }
 
-void DoseProfileDialog::plotProfile() {
-  QChart *chart = new QChart();
-  chart->legend()->show();
+void DoseProfileDialog::plotProfile()
+{
+    QChart *chart = new QChart();
+    chart->legend()->show();
 
-  // Enable anti-aliasing
-  this->ui->ChartView->setRenderHint(QPainter::Antialiasing, true);
+    // Enable anti-aliasing
+    this->ui->ChartView->setRenderHint(QPainter::Antialiasing, true);
 
-  chart->addSeries(this->DoseData);
-  this->ui->ChartView->setChart(chart);
+    chart->addSeries(this->DoseData);
+    this->ui->ChartView->setChart(chart);
 
-  QValueAxis *axisX = new QValueAxis;
-  axisX->setTickCount(10);
-  axisX->setLabelFormat("%.0f");
-  axisX->setTitleText("Distance (mm)");
-  this->ui->ChartView->chart()->setAxisX(axisX, this->DoseData);
+    QValueAxis *axisX = new QValueAxis;
+    axisX->setTickCount(10);
+    axisX->setLabelFormat("%.0f");
+    axisX->setTitleText("Distance (mm)");
+    this->ui->ChartView->chart()->setAxisX(axisX, this->DoseData);
 
-  QValueAxis *axisY = new QValueAxis;
-  axisY->setTickCount(10);
-  axisY->setLabelFormat("%.1f");
-  axisY->setTitleText("Dose (Gy)");
-  this->ui->ChartView->chart()->setAxisY(axisY, this->DoseData);
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setTickCount(10);
+    axisY->setLabelFormat("%.1f");
+    axisY->setTitleText("Dose (Gy)");
+    this->ui->ChartView->chart()->setAxisY(axisY, this->DoseData);
 }
 
-void DoseProfileDialog::on_actionSave_Figure_triggered() {
-  QString fileName = QFileDialog::getSaveFileName(this, "Save DVH Figure",
-                                                  "Dose profile", "png(*.png)");
-  this->ui->ChartView->grab().save(fileName.append(".png"));
+void DoseProfileDialog::on_actionSave_Figure_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    "Save DVH Figure",
+                                                    "Dose profile",
+                                                    "png(*.png)");
+    this->ui->ChartView->grab().save(fileName.append(".png"));
 }
 
 void DoseProfileDialog::closeEvent(QCloseEvent *event) {}

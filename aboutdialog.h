@@ -26,8 +26,8 @@ Copyright (c) 2021 Jothy Selvaraj
 
 #include <QDialog>
 
-        namespace Ui {
-    class AboutDialog;
+namespace Ui {
+class AboutDialog;
 }
 
 class AboutDialog : public QDialog

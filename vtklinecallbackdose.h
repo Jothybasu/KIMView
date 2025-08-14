@@ -36,20 +36,21 @@ SOFTWARE.
 
 #include "doseprofiledialog.h"
 
-class vtkLineCallbackDose : public vtkCommand {
- public:
-  vtkLineCallbackDose(QWidget *parent);
-  ~vtkLineCallbackDose();
-  vtkLineCallbackDose *New(QWidget *parent);
-  vtkSmartPointer<vtkPolyData> lineData;
-  void Execute(vtkObject *caller, unsigned long, void *);
-  vtkSmartPointer<vtkImageData> dose;
-  DoseProfileDialog *doseProfiler;
-  float distance;
-  double trX, trY, trZ;  // X,Y,Z translations
-  void transformPolyData();
-  int SliceOrientation = 0;  // Axial by default
-  QSplineSeries *SplineSeries;
+class vtkLineCallbackDose : public vtkCommand
+{
+public:
+    vtkLineCallbackDose(QWidget *parent);
+    ~vtkLineCallbackDose();
+    vtkLineCallbackDose *New(QWidget *parent);
+    vtkSmartPointer<vtkPolyData> lineData;
+    void Execute(vtkObject *caller, unsigned long, void *);
+    vtkSmartPointer<vtkImageData> dose;
+    DoseProfileDialog *doseProfiler;
+    float distance;
+    double trX, trY, trZ; // X,Y,Z translations
+    void transformPolyData();
+    int SliceOrientation = 0; // Axial by default
+    QSplineSeries *SplineSeries;
 };
 
-#endif  // VTKLINECALLBACKDOSE_H
+#endif // VTKLINECALLBACKDOSE_H
