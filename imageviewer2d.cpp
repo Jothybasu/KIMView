@@ -143,7 +143,7 @@ ImageViewer2D::ImageViewer2D(QWidget *parent, QActionGroup *contextMenus)
 
     this->SliceStep = 3.0; // Default slice step
 
-    // initialize class members
+    //Initialize class members
     this->ImageData = vtkSmartPointer<vtkImageData>::New();
     this->RTDose = vtkSmartPointer<vtkImageData>::New();
     this->ViewRenderer = vtkSmartPointer<vtkRenderer>::New();

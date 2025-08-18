@@ -1597,9 +1597,9 @@ void MainWindow::on_actionView1_triggered()
 {
     this->BEVViewer->parentWidget()->hide();
 
-    this->AxialViewer->parentWidget()->setGeometry(0, 0, 1280, 1024);
-    this->SagittalViewer->parentWidget()->setGeometry(1280, 0, 618, 512);
-    this->CoronalViewer->parentWidget()->setGeometry(1280, 512, 618, 512);
+    this->AxialViewer->parentWidget()->setGeometry(0, 0, 1280, 904);
+    this->SagittalViewer->parentWidget()->setGeometry(1280, 0, 618, 452);
+    this->CoronalViewer->parentWidget()->setGeometry(1280, 452, 618, 452);
 }
 
 void MainWindow::on_actionTile_All_triggered()
