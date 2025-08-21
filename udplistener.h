@@ -64,6 +64,7 @@ public:
     BEVWidget *BEVViewer;
     unsigned int SelectROINum;
     void UpdateViews();
+    void UpdateViews2();
     double (*ROIColors)[3];
     unsigned int selectedStructureNum;
     QList<QString> ROINames;

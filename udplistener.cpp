@@ -123,7 +123,7 @@ void UDPListener::readMessage()
 
     delete UDPShifts;
 
-    this->UpdateViews();
+    this->UpdateViews2();
     QCoreApplication::processEvents();
 
     //qDebug() <<"Rendering took" << timer.elapsed() << "milliseconds";
@@ -244,3 +244,13 @@ void UDPListener::UpdateViews()
     this->CoronalViewer->ViewRenderer->AddActor(this->TrackingActorCoronal);
     this->CoronalViewer->ViewRenderer->GetRenderWindow()->Render();
 }
+
+void UDPListener::UpdateViews2()
+{
+    this->AxialViewer->MoveToLocation(this->AxialViewer->SliceLoc+this->shifts[0]);
+    this->SagittalViewer->MoveToLocation(this->SagittalViewer->SliceLoc+this->shifts[1]);
+    this->CoronalViewer->MoveToLocation(this->CoronalViewer->SliceLoc+this->shifts[2]);
+
+}
+
+

@@ -39,8 +39,8 @@ int main(int argc, char *argv[])
     a.setOrganizationDomain("https://image-x.sydney.edu.au/");
     a.setApplicationName("KIMView");
 
-     // // Default style
-     // QFile file("Styles/Ubuntu.qss");
+     // Default style
+     // QFile file("Styles/darkstyle.qss");
      // file.open(QFile::ReadOnly);
      // QString styleSheet = QLatin1String(file.readAll());
      // a.setStyleSheet(styleSheet);

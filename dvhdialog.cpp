@@ -333,7 +333,7 @@ void DVHDialog::on_groupBoxResampleDoseGrid_toggled(bool)
 {
     bool flag = this->ui->groupBoxResampleDoseGrid->isChecked();
     this->resampleDoseFlag = flag;
-    //    qDebug()<<this->resampleDoseFlag<<"Resample Dose";
+    //qDebug()<<this->resampleDoseFlag<<"Resample Dose";
 }
 
 void DVHDialog::on_checkBoxLegend_clicked()
