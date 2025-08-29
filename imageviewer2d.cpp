@@ -167,6 +167,35 @@ ImageViewer2D::ImageViewer2D(QWidget *parent, QActionGroup *contextMenus)
     this->ImgPositionAnnotation->GetTextProperty()->SetColor(1, 0.95, 0);
     this->ImgPositionAnnotation->GetTextProperty()->SetFontFamilyToTimes();
 
+    //Matrices for axial, coronal, sagittal, oblique view orientations
+    static double axialElements[16] = {
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1 };
+
+    axialMat->DeepCopy(axialElements);
+
+
+    static double sagittalElements[16] = {
+        0, 0, -1, 0,
+        1, 0, 0, 0,
+        0, -1, 0, 0,
+        0, 0, 0, 1
+    };
+
+    sagittalMat->DeepCopy(sagittalElements);
+
+    static double coronalElements[16] = {
+                                         1, 0, 0, 0,
+                                         0, 0, 1, 0,
+                                         0,-1, 0, 0,
+                                         0, 0, 0, 1 };
+
+    coronalMat->DeepCopy(coronalElements);
+
+
+
     // Initialize Window Level/Width annotation
     this->WLWAnnotation = vtkSmartPointer<vtkCornerAnnotation>::New();
     this->WLWAnnotation->SetLinearFontScaleFactor(5.0);
@@ -375,99 +404,33 @@ void ImageViewer2D::SliceImageAndDose(double SliceLoc)
     this->ImageData->GetOrigin(origin);
     this->ImageData->GetCenter(center);
 
-    // Matrices for axial, coronal, sagittal view orientations
-    double *AxialElements = new double[16];
-    AxialElements[0] = 1.0;
-    AxialElements[1] = 0.0;
-    AxialElements[2] = 0.0;
-    AxialElements[3] = 0.0;
-    AxialElements[4] = 0.0;
-    AxialElements[5] = 1.0;
-    AxialElements[6] = 0.0;
-    AxialElements[7] = 0.0;
-    AxialElements[8] = 0.0;
-    AxialElements[9] = 0.0;
-    AxialElements[10] = 1.0;
-    AxialElements[11] = 0.0;
-    AxialElements[12] = 0.0;
-    AxialElements[13] = 0.0;
-    AxialElements[14] = 0.0;
-    AxialElements[15] = 1.0;
 
-    double *SagittalElements = new double[16];
-    SagittalElements[0] = 0.0;
-    SagittalElements[1] = 0.0;
-    SagittalElements[2] = -1.0;
-    SagittalElements[3] = 0.0;
-    SagittalElements[4] = 1.0;
-    SagittalElements[5] = 0.0;
-    SagittalElements[6] = 0.0;
-    SagittalElements[7] = 0.0;
-    SagittalElements[8] = 0.0;
-    SagittalElements[9] = -1.0;
-    SagittalElements[10] = 0.0;
-    SagittalElements[11] = 0.0;
-    SagittalElements[12] = 0.0;
-    SagittalElements[13] = 0.0;
-    SagittalElements[14] = 0.0;
-    SagittalElements[15] = 1.0;
-
-    double *CoronalElements = new double[16];
-    CoronalElements[0] = 1.0;
-    CoronalElements[1] = 0.0;
-    CoronalElements[2] = 0.0;
-    CoronalElements[3] = 0.0;
-    CoronalElements[4] = 0.0;
-    CoronalElements[5] = 0.0;
-    CoronalElements[6] = 1.0;
-    CoronalElements[7] = 0.0;
-    CoronalElements[8] = 0.0;
-    CoronalElements[9] = -1.0;
-    CoronalElements[10] = 0.0;
-    CoronalElements[11] = 0.0;
-    CoronalElements[12] = 0.0;
-    CoronalElements[13] = 0.0;
-    CoronalElements[14] = 0.0;
-    CoronalElements[15] = 1.0;
-
-    // Set the slice orientation
-    vtkSmartPointer<vtkMatrix4x4> resliceAxes = vtkSmartPointer<vtkMatrix4x4>::New();
+    // Set the slice orientation to axial
     if (this->SliceOrientation == 0) {
-        resliceAxes->DeepCopy(AxialElements);
+        this->axialMat->SetElement(0, 3, 0);
+        this->axialMat->SetElement(1, 3, 0);
+        this->axialMat->SetElement(2, 3, SliceLoc);
+        this->ImageReslice->SetResliceAxes(this->axialMat);
 
     }
 
+    // Set the slice orientation to sagittal
     else if (this->SliceOrientation == 1) {
-        resliceAxes->DeepCopy(SagittalElements);
+        this->sagittalMat->SetElement(0, 3, SliceLoc);
+        this->sagittalMat->SetElement(1, 3, 0);
+        this->sagittalMat->SetElement(2, 3, 0);
+        this->ImageReslice->SetResliceAxes(this->sagittalMat);
     }
 
+    // Set the slice orientation to coronal
     else if (this->SliceOrientation == 2) {
-        resliceAxes->DeepCopy(CoronalElements);
+        this->coronalMat->SetElement(0, 3, 0);
+        this->coronalMat->SetElement(1, 3, SliceLoc);
+        this->coronalMat->SetElement(2, 3, 0);
+        this->ImageReslice->SetResliceAxes(this->coronalMat);
     }
 
-    switch (this->SliceOrientation) {
-    case 0:
-        resliceAxes->SetElement(0, 3, 0);
-        resliceAxes->SetElement(1, 3, 0);
-        resliceAxes->SetElement(2, 3, SliceLoc);
-        break;
 
-    case 1:
-        resliceAxes->SetElement(0, 3, SliceLoc);
-        resliceAxes->SetElement(1, 3, 0);
-        resliceAxes->SetElement(2, 3, 0);
-        break;
-
-    case 2:
-        resliceAxes->SetElement(0, 3, 0);
-        resliceAxes->SetElement(1, 3, SliceLoc);
-        resliceAxes->SetElement(2, 3, 0);
-        break;
-    }
-
-    // Extract a slice in the desired orientation
-    // Inialialize ImageReslice
-    this->ImageReslice->SetResliceAxes(resliceAxes);
     this->ImageReslice->Update();
 
     // Create a greyscale lookup table
@@ -494,7 +457,24 @@ void ImageViewer2D::SliceImageAndDose(double SliceLoc)
     vtkSmartPointer<vtkImageReslice> resliceDose = vtkSmartPointer<vtkImageReslice>::New();
     resliceDose->SetInputData(this->RTDose);
     resliceDose->SetOutputDimensionality(2);
-    resliceDose->SetResliceAxes(resliceAxes);
+
+    // Set the slice orientation to axial, sagittal or coronal
+    if (this->SliceOrientation == 0)
+    {
+        resliceDose->SetResliceAxes(this->axialMat);
+    }
+
+    else if (this->SliceOrientation == 1)
+    {
+        resliceDose->SetResliceAxes(this->sagittalMat);
+    }
+
+    else if (this->SliceOrientation == 2)
+    {
+        resliceDose->SetResliceAxes(this->coronalMat);
+    }
+
+
     resliceDose->SetInterpolationModeToCubic();
     resliceDose->Update();
 
@@ -538,9 +518,7 @@ void ImageViewer2D::SliceImageAndDose(double SliceLoc)
     delete[] origin;
     delete[] center;
 
-    delete[] AxialElements;
-    delete[] SagittalElements;
-    delete[] CoronalElements;
+
 }
 
 void ImageViewer2D::ShowImageAndDose(double SliceLoc)

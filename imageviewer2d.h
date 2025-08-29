@@ -52,6 +52,7 @@ SOFTWARE.
 #include <vtkVolume.h>
 #include <vtkinteractorstyleimagecustom.h>
 #include <vtklinecallbackdose.h>
+#include <vtkMatrix4x4.h>
 
 // Initialize vtk modules
 VTK_MODULE_INIT(vtkRenderingOpenGL2);
@@ -157,9 +158,18 @@ public:
     std::vector<vtkSmartPointer<vtkPolyData> > BeamList;
     std::vector<vtkSmartPointer<vtkPolyData> > POIList;
 
+    vtkSmartPointer<vtkMatrix4x4>axialMat=
+        vtkSmartPointer<vtkMatrix4x4>::New();
+    vtkSmartPointer<vtkMatrix4x4>sagittalMat=
+        vtkSmartPointer<vtkMatrix4x4>::New();
+    vtkSmartPointer<vtkMatrix4x4>coronalMat=
+        vtkSmartPointer<vtkMatrix4x4>::New();
+
+
     QList<QString> ROINames;
     QList<QString> ROITypes;
     QList<int> ROINo;
+
 
 private slots:
     void on_toolButtonSagittal_clicked();
